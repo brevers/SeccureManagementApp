@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 
 gem "devise"
 gem "nested_scaffold"
+gem 'bootstrap', '~> 5.2.2'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
