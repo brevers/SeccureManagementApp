@@ -1,49 +1,51 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
+  <%= render @project %>
 
-<div>
-  <%= link_to "Edit", edit_project_path(@project) %> |
-  <%= link_to "Back Projects", projects_path %>
+  <div>
+    <%= link_to "Edit", edit_project_path(@project) %> |
+    <%= link_to "Back Projects", projects_path %>
 
-  <%= button_to "Destroy", @project, method: :delete %>
-</div>
+    <%= button_to "Destroy", @project, method: :delete %>
+  </div>
 
-<hr>
+  <hr>
 
-<h1>New task</h1>
-<%= render 'tasks/form' %>
+  <h1>New task</h1>
+  <%= render 'tasks/form' %>
 
-<hr>
+  <hr>
 
-<h1>Listing tasks</h1>
+  <h1>Listing tasks</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @project.tasks.each do |task| %>
-  <% if task.persisted? %>
+  <table>
     <tr>
-      <td><%= task.name %></td>
-      <td><%= task.description %></td>
-      <td><%= task.status %></td>
-      <td><%= task.project %></td>
-      <td><%= link_to 'Show', [task.project, task] %></td>
-      <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-      <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
+
+  <% @project.tasks.each do |task| %>
+    <% if task.persisted? %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.status %></td>
+        <td><%= task.project %></td>
+        <td><%= link_to 'Show', [task.project, task] %></td>
+        <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+        <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
   <% end %>
-<% end %>
-</table>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Task', new_project_task_path(@project) %>
+  <%= link_to 'New Task', new_project_task_path(@project) %>
+</div>

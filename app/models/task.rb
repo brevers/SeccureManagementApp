@@ -6,6 +6,6 @@ class Task < ApplicationRecord
   STATUS_PREFERENCES = [
     ["TO BE DONE", "not-started-yet"],
     ["ONGOING", "on-going"],
-    ["DONE", "not-started-yet"]
+    ["DONE", "concluded"]
   ]
 end

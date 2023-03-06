@@ -1,14 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
 
-<h1>Projects</h1>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+      <% if user_signed_in? %>
+        <h2>Welcome, <%= current_user.email %>!</h2>
+      <% else %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <h2>Sign in</h2>
 
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+
+          <% if devise_mapping.rememberable? %>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          <% end %>
+
+          <%= f.submit "Sign in", class: "btn btn-primary btn-block mt-3" %>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      <% end %>
+    </div>
+  </div>
+
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Projects</h1>
+
+  <div id="projects">
+    <% @projects.each do |project| %>
+      <%= render project %>
+      <p>
+        <%= link_to "Show this project", project %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New project", new_project_path %>
+
 </div>
-
-<%= link_to "New project", new_project_path %>
