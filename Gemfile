@@ -46,6 +46,10 @@ gem "devise"
 gem "nested_scaffold"
 gem 'bootstrap', '~> 5.2.2'
 
+# OWASP Checker
+# https://brakemanscanner.org
+gem "brakeman"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
