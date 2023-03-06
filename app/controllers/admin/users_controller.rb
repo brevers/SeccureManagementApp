@@ -10,7 +10,11 @@ module Admin
     end
 
     def update
-      raise "CRAP"
+      if @user.update role: User.roles[update_user_params[:role]]
+         redirect_to action: :index, notice: "User was successfully updated."
+      else
+         redirect_to action: :index, alert: "Failed to update user."
+      end
     end
 
     private
@@ -20,7 +24,7 @@ module Admin
     end
 
     def update_user_params
-      params.permit(:id)
+      params.permit(:id, :role)
     end
   end
 end

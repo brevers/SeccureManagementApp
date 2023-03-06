@@ -8,23 +8,22 @@
           <th>Role</th>
           <th></th>
         </tr>
-        <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= user.email %>
-            </td>
-            <td>
-               <%= select_tag :department,
-                  options_for_select(User.roles.map{|k,_| [k,k]}, user.role)
-                %>
-            </td>
-            <td>
-              <%= link_to "Update", admin_user_path(user),
-                  data: { turbo_method: :put },
-                  class: "btn btn-outline-primary"
-              %>
-            </td>
-          </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <%= form_tag admin_user_path(user), method: :put do %>
+              <td>
+                <%= user.email %>
+              </td>
+              <td>
+                 <%= select_tag :role,
+                    options_for_select(User.roles.map{|k,_| [k,k]}, user.role)
+                  %>
+              </td>
+              <td>
+                <%= submit_tag "Update", class: "btn btn-outline-primary" %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </table>
       <hr>
