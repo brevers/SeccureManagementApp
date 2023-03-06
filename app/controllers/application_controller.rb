@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  def ensure_admin!
+    return if current_user.present? && current_user.admin?
+
+    redirect_back(fallback_location:"/", alert: "You cannot access this page")
+  end
+
   def ensure_manager_or_above!
     return if current_user.present? && current_user.manager_or_above?
 
