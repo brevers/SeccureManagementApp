@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1 or /projects/1.json
   def show
     @task = @project.tasks.build
+    @tasks_accessible_to_current_user = @project.tasks.accessible_to(current_user)
   end
 
   # GET /projects/new

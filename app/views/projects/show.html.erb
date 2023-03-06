@@ -16,7 +16,7 @@
 
   <hr>
 
-  <% if @project.tasks.any? %>
+  <% if @tasks_accessible_to_current_user.any? %>
     <h1>Listing tasks</h1>
     <table class="table">
       <tr>
@@ -32,7 +32,7 @@
         <% end %>
       </tr>
 
-      <% @project.tasks.each do |task| %>
+      <% @tasks_accessible_to_current_user.each do |task| %>
         <% if task.persisted? %>
           <tr>
             <td><%= task.name %></td>
@@ -53,6 +53,8 @@
         <% end %>
       <% end %>
     </table>
+  <% else %>
+    <b>No tasks yet</b>
   <% end %>
 
 

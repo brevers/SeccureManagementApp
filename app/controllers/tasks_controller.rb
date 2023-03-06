@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 
   # GET projects/1/tasks
   def index
-    @tasks = @project.tasks
+    @tasks = @project.tasks.accessible_to(current_user)
   end
 
   # GET projects/1/tasks/1

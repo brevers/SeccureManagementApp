@@ -20,6 +20,11 @@
   <%= @task.project.name %>
 </p>
 
+<p>
+  <b>Department:</b>
+  <%= @task.department %>
+</p>
+
 
 <% if current_user.manager_or_above? %>
   <%= link_to 'Edit', edit_project_task_path(@task.project, @task) %> |
