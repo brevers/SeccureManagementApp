@@ -24,6 +24,7 @@
         <th>Description</th>
         <th>Status</th>
         <th>Project</th>
+        <th>Department</th>
         <th></th>
         <% if current_user.manager_or_above? %>
           <th></th>
@@ -38,6 +39,7 @@
             <td><%= task.description %></td>
             <td><%= task.status %></td>
             <td><%= task.project.name %></td>
+            <td><%= task.department %></td>
             <td><%= link_to 'Show', [task.project, task] %></td>
 
             <% if current_user.manager_or_above? %>

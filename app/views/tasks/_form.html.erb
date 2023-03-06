@@ -26,6 +26,11 @@
     <%= f.select :status, options_for_select(Task.statuses.map{|k,_| [k,k]}) %>
   </div>
 
+  <div class="field">
+    <%= f.label :department %><br />
+    <%= f.select :department, options_for_select(User.roles.map{|k,_| [k,k]}) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
