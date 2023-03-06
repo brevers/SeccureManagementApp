@@ -26,8 +26,8 @@
         <th>Project</th>
         <th>Department</th>
         <th></th>
-        <% if current_user.manager_or_above? %>
           <th></th>
+        <% if current_user.manager_or_above? %>
           <th></th>
         <% end %>
       </tr>
@@ -42,8 +42,8 @@
             <td><%= task.department %></td>
             <td><%= link_to 'Show', [task.project, task] %></td>
 
-            <% if current_user.manager_or_above? %>
-              <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+            <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+              <% if current_user.manager_or_above? %>
               <td><%= link_to 'Destroy', [task.project, task],
                       data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
                   %>

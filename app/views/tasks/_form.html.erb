@@ -28,7 +28,12 @@
 
   <div class="field">
     <%= f.label :department %><br />
-    <%= f.select :department, options_for_select(User.roles.map{|k,_| [k,k]}, @task.department) %>
+    <% if current_user.manager_or_above? %>
+      <%= f.select :department, options_for_select(User.roles.map{|k,_| [k,k]}, @task.department) %>
+    <% else %>
+      <%= f.select :department, options_for_select(User.roles.map{|k,_| [k,k]}, @task.department), {}, disabled: true %>
+      (*) Only your manager can reasign this task
+    <% end %>
   </div>
 
   <div class="actions">

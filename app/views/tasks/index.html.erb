@@ -9,8 +9,8 @@
       <th>Project</th>
       <th>Department</th>
       <th></th>
+      <th></th>
       <% if current_user.manager_or_above? %>
-        <th></th>
         <th></th>
       <% end %>
     </tr>
@@ -23,8 +23,8 @@
       <td><%= task.project.name %></td>
       <td><%= task.department %></td>
       <td><%= link_to 'Show', [task.project, task] %></td>
+      <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
       <% if current_user.manager_or_above? %>
-        <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
         <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tr>

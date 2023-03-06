@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_manager_or_above!, except: %i[ index show ]
+  before_action :ensure_manager_or_above!, only: %i[ new create destroy ]
 
   before_action :set_project
   before_action :set_task, only: [:show, :edit, :update, :destroy]

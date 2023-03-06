@@ -2,12 +2,13 @@ require "application_system_test_case"
 
 class ProjectsTest < ApplicationSystemTestCase
   setup do
+    sign_in users(:admin)
     @project = projects(:one)
   end
 
   test "visiting the index" do
     visit projects_url
-    assert_selector "h1", text: "Projects"
+    assert_selector "h2", text: "Projects"
   end
 
   test "should create project" do
@@ -16,7 +17,6 @@ class ProjectsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @project.description
     fill_in "Name", with: @project.name
-    fill_in "User", with: @project.user_id
     click_on "Create Project"
 
     assert_text "Project was successfully created"
@@ -25,11 +25,10 @@ class ProjectsTest < ApplicationSystemTestCase
 
   test "should update Project" do
     visit project_url(@project)
-    click_on "Edit this project", match: :first
+    click_on "Edit", match: :first
 
     fill_in "Description", with: @project.description
     fill_in "Name", with: @project.name
-    fill_in "User", with: @project.user_id
     click_on "Update Project"
 
     assert_text "Project was successfully updated"
@@ -38,7 +37,7 @@ class ProjectsTest < ApplicationSystemTestCase
 
   test "should destroy Project" do
     visit project_url(@project)
-    click_on "Destroy this project", match: :first
+    click_on "Destroy", match: :first
 
     assert_text "Project was successfully destroyed"
   end
