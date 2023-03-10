@@ -4,5 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :projects
+
+  belongs_to :organization
+
+  enum :role, %i(admin manager engineer qa)
+
+  def manager_or_above?
+    self.admin? || self.manager?
+  end
 end

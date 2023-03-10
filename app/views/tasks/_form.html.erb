@@ -15,13 +15,15 @@
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: :true %>
   </div>
+
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select :status, Task::STATUS_PREFERENCES%>
+    <%= f.select :status, options_for_select(Task.statuses.map{|k,_| [k,k]}) %>
   </div>
 
   <div class="actions">

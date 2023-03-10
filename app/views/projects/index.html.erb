@@ -27,7 +27,7 @@
 
   <p style="color: green"><%= notice %></p>
 
-  <h1>Projects</h1>
+  <h2>Projects</h2>
 
   <div id="projects">
     <% @projects.each do |project| %>
@@ -38,6 +38,11 @@
     <% end %>
   </div>
 
-  <%= link_to "New project", new_project_path %>
+  <% if current_user.manager_or_above? %>
+    <%= link_to "New project", new_project_path %>
+  <% else %>
+    <hr>
+    <b>Contact to your manager to add new projects</b>
+  <% end %>
 
 </div>

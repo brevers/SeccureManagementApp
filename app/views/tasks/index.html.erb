@@ -1,14 +1,16 @@
 <h1>Listing tasks</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Description</th>
     <th>Status</th>
     <th>Project</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <% if current_user.manager_or_above? %>
+      <th></th>
+      <th></th>
+    <% end %>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -16,14 +18,21 @@
     <td><%= task.name %></td>
     <td><%= task.description %></td>
     <td><%= task.status %></td>
-    <td><%= task.project %></td>
+    <td><%= task.project.name %></td>
     <td><%= link_to 'Show', [task.project, task] %></td>
-    <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-    <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user.manager_or_above? %>
+      <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+      <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Task', new_project_task_path(params[:project_id]) %>
+<% if current_user.manager_or_above? %>
+  <%= link_to 'New Task', new_project_task_path(params[:project_id]) %>
+<% else %>
+  <hr>
+  <b>Ask your manager to create new tasks for this project</b>
+<% end %>

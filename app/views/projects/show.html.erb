@@ -4,10 +4,14 @@
   <%= render @project %>
 
   <div>
-    <%= link_to "Edit", edit_project_path(@project) %> |
-    <%= link_to "Back Projects", projects_path %>
 
-    <%= button_to "Destroy", @project, method: :delete %>
+    <% if current_user.manager_or_above? %>
+      <%= link_to "Edit", edit_project_path(@project) %> |
+      <%= link_to "Back Projects", projects_path %>
+      <%= button_to "Destroy", @project, method: :delete %>
+    <% else %>
+      <%= link_to "Back Projects", projects_path %>
+    <% end %>
   </div>
 
   <hr>
@@ -21,8 +25,10 @@
         <th>Status</th>
         <th>Project</th>
         <th></th>
-        <th></th>
-        <th></th>
+        <% if current_user.manager_or_above? %>
+          <th></th>
+          <th></th>
+        <% end %>
       </tr>
 
       <% @project.tasks.each do |task| %>
@@ -33,19 +39,26 @@
             <td><%= task.status %></td>
             <td><%= task.project.name %></td>
             <td><%= link_to 'Show', [task.project, task] %></td>
-            <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
-            <td><%= link_to 'Destroy', [task.project, task],
-                    data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
-                %>
-            </td>
+
+            <% if current_user.manager_or_above? %>
+              <td><%= link_to 'Edit', edit_project_task_path(task.project, task) %></td>
+              <td><%= link_to 'Destroy', [task.project, task],
+                      data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
+                  %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       <% end %>
     </table>
   <% end %>
 
+
+<% if current_user.manager_or_above? %>
   <h1>New task</h1>
     <%= render 'tasks/form' %>
-  <hr>
-
+<% else %>
+    <hr>
+  <b>Ask your manager to create new tasks for this project</b>
+<% end %>
 </div>

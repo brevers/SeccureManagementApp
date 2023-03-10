@@ -17,9 +17,13 @@
 
 <p>
   <b>Project:</b>
-  <%= @task.project %>
+  <%= @task.project.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_project_task_path(@task.project, @task) %> |
-<%= link_to 'Back', project_tasks_path(@task.project) %>
+<% if current_user.manager_or_above? %>
+  <%= link_to 'Edit', edit_project_task_path(@task.project, @task) %> |
+  <%= link_to 'Back', project_tasks_path(@task.project) %>
+<% else %>
+  <%= link_to 'Back', project_tasks_path(@task.project) %>
+<% end %>
