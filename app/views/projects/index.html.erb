@@ -1,20 +1,26 @@
-<div class="container">
-
+<div class="container mt-5">
   <div class="row">
-    <div class="col-md-6 offset-md-3 mt-5">
+    <div class="col-md-6 offset-md-3">
       <% if user_signed_in? %>
-        <h2>Welcome, <%= current_user.email %>!</h2>
+        <h2 class="text-center mb-4">Welcome, <%= current_user.email %>!</h2>
       <% else %>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <h2>Sign in</h2>
+        <h2 class="text-center mb-4">Sign in</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mb-4"}) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+          </div>
 
-          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
-
-          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+          </div>
 
           <% if devise_mapping.rememberable? %>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <div class="form-group form-check">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, class: "form-check-label" %>
+            </div>
           <% end %>
 
           <%= f.submit "Sign in", class: "btn btn-primary btn-block mt-3" %>
@@ -25,17 +31,14 @@
     </div>
   </div>
 
-  <p style="color: green"><%= notice %></p>
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center mb-4">Projects</h1>
 
   <h2>Projects</h2>
 
-  <div id="projects">
-    <% @projects.each do |project| %>
-      <%= render project %>
-      <p>
-        <%= link_to "Show this project", project %>
-      </p>
-    <% end %>
+      <%= link_to "New project", new_project_path, class: "btn btn-primary btn-block mt-3" %>
+    </div>
   </div>
 
   <% if current_user.manager_or_above? %>
