@@ -3,9 +3,11 @@
 one:
   name: MyString
   description: MyText
-  user: one
+  organization: tams_org
+
 
 two:
   name: MyString
   description: MyText
-  user: two
+  organization: tams_org
+

@@ -6,6 +6,8 @@
 #
 one:
   email: jane@example.com
+  role: 0
+  organization: tams_org
 
 two:
   email: john@example.com
