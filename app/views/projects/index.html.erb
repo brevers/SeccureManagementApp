@@ -33,14 +33,17 @@
 
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
-      <h1 class="text-center mb-4">Projects</h1>
-
-      <%= link_to "New project", new_project_path, class: "btn btn-primary btn-block mt-3" %>
+      <h2>Projects</h2>
+       <% @projects.each do |project| %>
+        <div>
+          <%= render project %>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <% if current_user.manager_or_above? %>
-    <%= link_to "New project", new_project_path %>
+    <%= link_to "New project", new_project_path, class: "btn btn-primary btn-block mt-3" %>
   <% else %>
     <hr>
     <b>Contact to your manager to add new projects</b>
