@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    if current_user.nil?
+    if current_user.nil? || current_user.organization.nil?
       # handle case where user is not logged in
     else
       @projects = current_user.organization.projects
