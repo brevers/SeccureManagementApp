@@ -35,24 +35,41 @@
     <div class="col-md-6 offset-md-3">
       <h2>Projects</h2>
       <% if @projects.nil? %>
-        <p> No projects found.</p>
+        <p>No projects found.</p>
       <% elsif @projects.any? %>
-        <% @projects.each do |project| %>
-          <div>
-            <%= render project %>
-          </div>
-        <% end %>
+        <div class="card-deck">
+          <% @projects.each do |project| %>
+            <div class="card mb-3">
+              <%= render project %>
+            </div>
+          <% end %>
+        </div>
       <% else %>
-        <p> No projects found.</p>
+        <p>No projects found.</p>
       <% end %>
     </div>
   </div>
 
   <% if current_user.manager_or_above? %>
-    <%= link_to "New project", new_project_path, class: "btn btn-primary btn-block mt-3" %>
+    <div class="row mt-3">
+      <div class="col-md-6 offset-md-3">
+        <%= link_to "New project", new_project_path, class: "btn btn-primary btn-block" %>
+      </div>
+    </div>
   <% else %>
-    <hr>
-    <b>Contact to your manager to add new projects</b>
+    <div class="row mt-3">
+      <div class="col-md-6 offset-md-3">
+        <hr>
+        <p class="text-muted">Contact your manager to add new projects.</p>
+      </div>
+    </div>
   <% end %>
 
+  <% if notice.present? %>
+    <div class="row mt-3">
+      <div class="col-md-6 offset-md-3">
+        <p class="text-success"><%= notice %></p>
+      </div>
+    </div>
+  <% end %>
 </div>
