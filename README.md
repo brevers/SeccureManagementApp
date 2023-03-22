@@ -21,4 +21,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* OWASP Checker
+https://brakemanscanner.org
+gem "brakeman"

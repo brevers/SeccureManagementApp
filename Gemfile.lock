@@ -68,11 +68,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
-    appmap (0.98.1)
-      activesupport
-      method_source
-      rack
-      reverse_markdown
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -203,8 +198,6 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    reverse_markdown (2.1.1)
-      nokogiri
     rexml (3.2.5)
     ruby-graphviz (1.2.5)
       rexml
@@ -263,7 +256,6 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  appmap
   bootsnap
   bootstrap (~> 5.2.2)
   brakeman

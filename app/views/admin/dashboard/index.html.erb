@@ -1,3 +1,9 @@
-<div class="container">
-  <%= link_to "Manage Users", admin_users_path(current_user) %>
+<div class="container border rounded p-3">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Admin Dashboard</h1>
+      <p class="card-text">This is where you can manage users and perform other administrative tasks.</p>
+      <%= link_to "Manage Users", admin_users_path(current_user), class: "btn btn-outline-info", style: "color: #007bff; font-size: 1.2em;" %>
+    </div>
+  </div>
 </div>
