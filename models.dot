@@ -1,0 +1,11 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true, bgcolor="none"]
+	"ApplicationRecord" []
+	"Organization" [shape=Mrecord, label="{Organization|id :bigint\lname :character varying\lcreated_at :timestamp(6) without time zone\lupdated_at :timestamp(6) without time zone\l}"]
+	"Project" [shape=Mrecord, label="{Project|id :bigint\lname :character varying\ldescription :text\lcreated_at :timestamp(6) without time zone\lupdated_at :timestamp(6) without time zone\lorganization_id :integer\l}"]
+	"Task" [shape=Mrecord, label="{Task|department :integer\lname :character varying\ldescription :text\lstatus :integer\lproject_id :bigint\lcreated_at :timestamp(6) without time zone\lupdated_at :timestamp(6) without time zone\lid :bigint\l}"]
+	"User" [shape=Mrecord, label="{User|organization_id :integer\lemail :character varying\lencrypted_password :character varying\lreset_password_token :character varying\lreset_password_sent_at :timestamp(6) without time zone\lremember_created_at :timestamp(6) without time zone\lcreated_at :timestamp(6) without time zone\lupdated_at :timestamp(6) without time zone\lrole :integer\lid :bigint\l}"]
+	"Organization" -> "Project" [arrowtail=crow, arrowhead=crow, dir=both color="#B16EE3"]
+	"Organization" -> "User" [arrowtail=crow, arrowhead=crow, dir=both color="#CB98B3"]
+	"Project" -> "Task" [arrowtail=crow, arrowhead=crow, dir=both color="#9CBC8D"]
+}
