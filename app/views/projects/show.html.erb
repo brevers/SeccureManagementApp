@@ -41,7 +41,7 @@
                   <td><%= link_to 'Show', [task.project, task], class: "btn btn-outline-info", style: "color: #007bff;" %></td>
                   <td><%= link_to 'Edit', edit_project_task_path(task.project, task), class: "btn btn-outline-info", style: "color: #007bff;" %></td>
                   <% if current_user.manager_or_above? %>
-                    <td><%= link_to 'Destroy', [task.project, task], data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-danger" %></td>
+                    <td><%= link_to 'Delete', [task.project, task], data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-outline-danger" %></td>
                   <% end %>
                 </tr>
               <% end %>
