@@ -10,37 +10,34 @@
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
           </div>
-
           <div class="form-group">
             <%= f.label :password %>
             <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
           </div>
-
           <% if devise_mapping.rememberable? %>
             <div class="form-group form-check">
               <%= f.check_box :remember_me, class: "form-check-input" %>
               <%= f.label :remember_me, class: "form-check-label" %>
             </div>
           <% end %>
-
           <%= f.submit "Sign in", class: "btn btn-primary btn-block mt-3" %>
         <% end %>
-
         <%= render "devise/shared/links" %>
       <% end %>
     </div>
   </div>
-
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
-      <h2>Projects</h2>
+      <h1 class="text-center mb-4">Projects</h1> <!-- added title -->
       <% if @projects.nil? %>
         <p>No projects found.</p>
       <% elsif @projects.any? %>
         <div class="card-deck">
           <% @projects.each do |project| %>
-            <div class="card mb-3">
-              <%= render project %>
+            <div class="card mb-3" style="background: linear-gradient(to bottom, #ffffff 0%,#f0f8ff 100%);">
+              <div class="card-body text-center"> <!-- centered text -->
+                <%= render project %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -49,11 +46,10 @@
       <% end %>
     </div>
   </div>
-
   <% if current_user.manager_or_above? %>
     <div class="row mt-3">
       <div class="col-md-6 offset-md-3">
-        <%= link_to "New project", new_project_path, class: "btn btn-primary btn-block" %>
+        <%= link_to "New project", new_project_path, class: "btn btn-outline-info", style: "color: #007bff;" %>
       </div>
     </div>
   <% else %>
@@ -64,7 +60,6 @@
       </div>
     </div>
   <% end %>
-
   <% if notice.present? %>
     <div class="row mt-3">
       <div class="col-md-6 offset-md-3">

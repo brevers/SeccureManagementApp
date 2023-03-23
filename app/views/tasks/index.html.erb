@@ -38,7 +38,7 @@
 <br />
 
 <% if current_user.manager_or_above? %>
-  <%= link_to 'New Task', new_project_task_path(params[:project_id]) %>
+  <%= link_to 'New Task', new_project_task_path(params[:project_id]), class: "btn btn-outline-info", style: "color: #007bff;" %>
 <% else %>
   <hr>
   <b>Ask your manager to create new tasks for this project</b>

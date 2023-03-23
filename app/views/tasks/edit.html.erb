@@ -1,6 +1,18 @@
-<h1>Editing task</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', [@task.project, @task] %> |
-<%= link_to 'Back', project_tasks_path(@task.project) %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mt-5" style="background: linear-gradient(to bottom, #ffffff 0%,#f0f8ff 100%);">
+        <div class="card-body p-5">
+          <h2 class="h3 mb-3 font-weight-normal text-center">Editing Task</h2>
+            <%= render 'form' %>
+        </div>
+      </div>
+      <div class="text-left mt-4">
+        <%= link_to 'Show Task', [@task.project, @task], class: "btn btn-outline-info" %> 
+        <%= link_to "Back to tasks", project_tasks_path(@task.project), class: "btn btn-outline-info" %>
+      </div>
+    </div>
+  </div>
+</div>
