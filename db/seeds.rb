@@ -7,10 +7,10 @@ projects = [
 ]
 
 tasks = [
-  "Research",
-  "Develop",
-  "QA",
-  "Deploy"
+  ["Research", User.roles[:engineer]],
+  ["Develop", User.roles[:engineer]],
+  ["QA", User.roles[:qa]],
+  ["Deploy", User.roles[:manager]]
 ]
 
 projects.each do |project_name|
@@ -18,10 +18,11 @@ projects.each do |project_name|
     project.organization = organization
     project.save
 
-    tasks.each do |task_name|
+    tasks.each do |task_name, department|
       project.tasks.create! \
         name: task_name,
-        status: Task.statuses[:ready]
+        status: Task.statuses[:ready],
+        department: department
     end
   end
 end

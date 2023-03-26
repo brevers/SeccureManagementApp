@@ -44,6 +44,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem "devise"
+gem 'devise_invitable', '~> 2.0.0'
 gem "nested_scaffold"
 gem 'bootstrap', '~> 5.2.2'
 
@@ -73,6 +74,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener_web'
 end
 
 group :test do
