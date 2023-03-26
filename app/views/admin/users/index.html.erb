@@ -17,18 +17,21 @@
             <tbody>
               <% @users.each do |user| %>
                 <tr>
-                  <%= form_tag admin_user_path(user), method: :put do %>
+                  <%= form_with url: admin_user_path(user), method: :put do |f| %>
                     <td>
                       <%= user.email %>
                     </td>
                     <td>
-                      <%= select_tag :role,
+                      <%= f.hidden_field "user[id]", value: user.id %>
+
+                      <%= f.select "user[role]",
                         options_for_select(User.roles.map{|k,_| [k,k]}, user.role),
+                        {},
                         class: "form-control"
                       %>
                     </td>
                     <td>
-                      <%= submit_tag "Update", class: "btn btn-outline-info" %>
+                      <%= f.submit "Update", class: "btn btn-outline-info" %>
                     </td>
                   <% end %>
                 </tr>

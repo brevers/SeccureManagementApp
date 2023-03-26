@@ -10,10 +10,16 @@ module Admin
     end
 
     def update
-      if @user.update role: User.roles[update_user_params[:role]]
-         redirect_to action: :index, notice: "User was successfully updated."
-      else
-         redirect_to action: :index, alert: "Failed to update user."
+      respond_to do |format|
+        if @user.update role: User.roles[update_user_params[:role]]
+          format.html {
+            redirect_to admin_users_path(current_user), notice: "The user's role was updated"
+          }
+        else
+          format.html {
+            redirect_to admin_users_path(current_user), notice: "Failed to update user's role"
+          }
+        end
       end
     end
 
@@ -24,7 +30,7 @@ module Admin
     end
 
     def update_user_params
-      params.permit(:id, :role)
+      params.require(:user).permit(:id, :role)
     end
   end
 end
