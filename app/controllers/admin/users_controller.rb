@@ -11,7 +11,7 @@ module Admin
 
     def update
       respond_to do |format|
-        if @user.update role: User.roles[update_user_params[:role]]
+        if @user.update role: User.roles[params[:user][:role]]
           format.html {
             redirect_to admin_users_path(current_user), notice: "The user's role was updated"
           }
@@ -30,7 +30,7 @@ module Admin
     end
 
     def update_user_params
-      params.require(:user).permit(:id, :role)
+      params.require(:user).permit(:id)
     end
   end
 end
