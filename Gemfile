@@ -51,6 +51,10 @@ gem 'bootstrap', '~> 5.2.2'
 # OWASP Checker
 # https://brakemanscanner.org
 gem "brakeman"
+gem 'bundler-audit'
+gem 'rubocop', require: false
+# ---
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
