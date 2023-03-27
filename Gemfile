@@ -50,8 +50,14 @@ gem 'bootstrap', '~> 5.2.2'
 
 # OWASP Checker
 # https://brakemanscanner.org
+# $ brakeman
 gem "brakeman"
+
+# $ bundle audit check --update
 gem 'bundler-audit'
+
+# Configured to run security checks
+# $ rubocop
 gem 'rubocop', require: false
 # ---
 
