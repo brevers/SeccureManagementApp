@@ -1,7 +1,11 @@
 class User < ApplicationRecord
+  devise :two_factor_authenticatable
+  devise :two_factor_authenticatable,
+         :otp_secret_encryption_key => ENV["OTP_KEY"]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :invitable, :database_authenticatable,
+  devise :invitable, :registerable,
          :recoverable, :rememberable, :validatable
 
   before_validation :set_defaults
@@ -12,6 +16,13 @@ class User < ApplicationRecord
 
   def manager_or_above?
     self.admin? || self.manager?
+  end
+
+  def otp_qr_code
+    issuer = "TamsApp"
+    label = "#{issuer}:#{email}"
+    qrcode = RQRCode::QRCode.new(otp_provisioning_uri(label, issuer: issuer))
+    qrcode.as_svg(module_size: 3)
   end
 
   private

@@ -45,6 +45,9 @@ gem "bootsnap", require: false
 
 gem "devise"
 gem 'devise_invitable', '~> 2.0.0'
+gem 'devise-two-factor'
+gem 'rqrcode'
+
 gem "nested_scaffold"
 gem 'bootstrap', '~> 5.2.2'
 
@@ -52,6 +55,7 @@ gem 'bootstrap', '~> 5.2.2'
 # https://brakemanscanner.org
 # $ brakeman
 gem "brakeman"
+gem 'bundler-audit'
 
 # $ bundle audit check --update
 gem 'bundler-audit'
@@ -95,3 +99,5 @@ group :test do
 end
 
 gem "cssbundling-rails", "~> 1.1"
+
+gem "dotenv-rails"
