@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  resources :two_factors, only: [:create, :destroy]
+
   namespace :admin do
     resources :dashboard, only: [:index] do
     end
