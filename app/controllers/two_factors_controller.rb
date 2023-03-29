@@ -2,7 +2,7 @@ class TwoFactorsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    User.first.update \
+    current_user.update \
       otp_secret: User.generate_otp_secret,
       otp_required_for_login: true
 
@@ -10,7 +10,7 @@ class TwoFactorsController < ApplicationController
   end
 
   def destroy
-    User.first.update \
+    current_user.update \
       otp_required_for_login: false
 
     redirect_to edit_user_registration_path(current_user)

@@ -13,11 +13,20 @@
 
             <div class="form-label-group mb-4">
               <%= f.label :password, class: "sr-only" %>
-              <%= f.password_field :password, class: "form-control rounded-pill", placeholder: "Password", autocomplete: "current-password" %>
+              <%= f.password_field :password,
+                class: "form-control rounded-pill",
+                placeholder: "Password",
+                autocomplete: "off"
+              %>
             </div>
 
-            <div class="field">
-              <h2>2FA -OTP Here</h2>
+           <div class="form-label-group mb-4">
+              <%= f.label "Authenticator Code", class: "sr-only" %>
+              <%= f.text_field :otp_attempt,
+                class: "form-control rounded-pill",
+                placeholder: "2FA Code",
+                autocomplete: "off"
+              %>
             </div>
 
             <% if devise_mapping.rememberable? %>

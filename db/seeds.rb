@@ -41,6 +41,8 @@ if Rails.env.development?
       user.role = role
       user.password = "Test1234!"
       user.password_confirmation = "Test1234!"
+      user.otp_secret = User.generate_otp_secret
+      user.otp_required_for_login = false
       user.organization = organization
     end
   end

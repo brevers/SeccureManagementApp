@@ -42,14 +42,25 @@
   <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
   <div style="margin-top: 20px;">
+    <hr>
   <h3>Two Factors Authentication</h3>
     <% if current_user.otp_required_for_login %>
       <div>
         <%= button_to "Disable 2FA", two_factor_path(current_user), method: :delete, class: "btn btn-danger" %>
       </div>
     <% else %>
-      <div>How to install and setup the app</div>
-      <hr>
+      <div class="col-8">
+        <ol class="mt-5">
+          <li>
+            Install Google Authenticator:
+            <%= link_to "Android", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en", target: :blank %>
+            or
+            <%= link_to "iOS", "https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8", target: :blank %>
+          </li>
+          <li>In the app, select "Set up account" or the Plus (+) sign.</li>
+          <li>Choose "Scan barcode"</li>
+        </ol>
+      </div>
       <%= current_user.otp_qr_code.html_safe %>
       <hr>
       <div>
