@@ -4,18 +4,22 @@ admin:
   email: admin@example.com
   role: 0
   organization: tams_org
+  otp_required_for_login: false
 
 manager:
   email: jane@example.com
   role: 1
   organization: tams_org
+  otp_required_for_login: false
 
 engineer:
   email: john@example.com
   role: 2
   organization: tams_org
+  otp_required_for_login: false
 
 qa:
   email: grace@example.com
   role: 3
   organization: tams_org
+  otp_required_for_login: false

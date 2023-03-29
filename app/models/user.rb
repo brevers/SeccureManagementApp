@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   before_validation :set_defaults
 
+  validate :strong_password
+
   belongs_to :organization
 
   enum :role, %i(admin manager engineer qa basic)
@@ -24,6 +26,12 @@ class User < ApplicationRecord
   end
 
   private
+
+  def strong_password
+    return if password.blank? || password =~ /\A(?=.*\d)(?=.*[A-Z])(?=.*\W)[^ ]{9,}\z/
+
+    errors.add :password, 'Password should have more than 8 characters including 1 uppercase letter, 1 number, 1 special character'
+  end
 
   def set_defaults
     self.organization = Organization.first unless self.organization.present?

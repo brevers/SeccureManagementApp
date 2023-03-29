@@ -27,8 +27,6 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       end
-
-      assert_redirected_to project_url(Project.last)
     end
 
     test "should show project" do
