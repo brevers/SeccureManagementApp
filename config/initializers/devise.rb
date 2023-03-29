@@ -8,7 +8,7 @@
 #
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-Devise.otp_allowed_drift = 60 * 60 * 12 # value in seconds
+Devise.otp_allowed_drift = 240
 Devise.setup do |config|
   config.warden do |manager|
     manager.default_strategies(:scope => :user).unshift :two_factor_authenticatable
