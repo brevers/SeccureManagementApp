@@ -55,8 +55,6 @@ gem 'bootstrap', '~> 5.2.2'
 # https://brakemanscanner.org
 # $ brakeman
 gem "brakeman"
-gem 'bundler-audit'
-
 # $ bundle audit check --update
 gem 'bundler-audit'
 
