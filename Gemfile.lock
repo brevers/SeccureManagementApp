@@ -94,12 +94,13 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     choice (0.2.0)
+    chunky_png (1.4.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
     date (3.3.3)
-    debug (1.7.1)
+    debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     devise (4.9.0)
@@ -108,9 +109,18 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-two-factor (5.0.0)
+      activesupport (~> 7.0)
+      devise (~> 4.0)
+      railties (~> 7.0)
+      rotp (~> 6.0)
     devise_invitable (2.0.7)
       actionmailer (>= 5.0)
       devise (>= 4.6)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -212,12 +222,17 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.7.0)
-    reline (0.3.2)
+    reline (0.3.3)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
+    rotp (6.2.2)
+    rqrcode (2.1.2)
+      chunky_png (~> 1.0)
+      rqrcode_core (~> 1.0)
+    rqrcode_core (1.2.0)
     rubocop (1.48.1)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -242,7 +257,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.8.2)
+    selenium-webdriver (4.8.5)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -296,7 +311,9 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1)
   debug
   devise
+  devise-two-factor
   devise_invitable (~> 2.0.0)
+  dotenv-rails
   importmap-rails
   jbuilder
   letter_opener_web
@@ -306,6 +323,7 @@ DEPENDENCIES
   railroady
   rails (~> 7.0.4, >= 7.0.4.2)
   rails-erd
+  rqrcode
   rubocop
   selenium-webdriver
   sprockets-rails
