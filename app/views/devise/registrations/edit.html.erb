@@ -45,10 +45,6 @@
     <hr>
   <h3>Two Factors Authentication</h3>
     <% if current_user.otp_required_for_login %>
-      <div>
-        <%= button_to "Disable 2FA", two_factor_path(current_user), method: :delete, class: "btn btn-danger" %>
-      </div>
-    <% else %>
       <div class="col-8">
         <ol class="mt-5">
           <li>
@@ -63,6 +59,11 @@
       </div>
       <%= current_user.otp_qr_code.html_safe %>
       <hr>
+
+      <div>
+        <%= button_to "Disable 2FA", two_factor_path(current_user), method: :delete, class: "btn btn-danger" %>
+      </div>
+    <% else %>
       <div>
         <%= button_to "Enable 2FA", two_factors_path(current_user), class: "btn btn-success" %>
       </div>
