@@ -92,7 +92,7 @@ user: admin@example.com
 pass: Test1234!
 ```
 
-### Vulnerable branch
+### Insecure branch
 To run the app in "vulnerable" mode, please run these commands
 
 ```
