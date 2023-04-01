@@ -79,7 +79,7 @@ ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT=
 
 Once everything is set and done:
 
-```rb
+```
 # Make sure we have no errors so far
 $ rails t
 
@@ -111,6 +111,7 @@ $ rake db:seed
 $ rails t
 
 # Start the rails server
+$ rails s
 ```
 
 Log in into the system using a demo user and have fun. For instance:
@@ -118,9 +119,10 @@ Log in into the system using a demo user and have fun. For instance:
 user: admin@example.com
 pass: Test1234!
 ```
+---
 ### Solve missing file yarn issue
 >run:
-```ruby
-yarn install
-rake assets:precompile
+```
+$ yarn install
+$ rake assets:precompile
 ```
