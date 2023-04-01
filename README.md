@@ -62,7 +62,7 @@ $ ./bin/rails db:encryption:init
 The previous command will print the required keys to the terminal. It should look
 something like this:
 
-```
+```ruby
 active_record_encryption:
   primary_key: EGY8WhulUOXixybod7ZWwMIL68R9o5kC
   deterministic_key: aPA5XyALhf75NNnMzaspW7akTfZp0lPY
@@ -79,7 +79,7 @@ ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT=
 
 Once everything is set and done:
 
-```
+```rb
 # Make sure we have no errors so far
 $ rails t
 
