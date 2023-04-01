@@ -118,4 +118,9 @@ Log in into the system using a demo user and have fun. For instance:
 user: admin@example.com
 pass: Test1234!
 ```
-
+### Solve missing file yarn issue
+>run:
+```ruby
+yarn install
+rake assets:precompile
+```
