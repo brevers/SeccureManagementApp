@@ -14,12 +14,11 @@ In the **secure** branch, access to resources is always limited by the current u
 On the insecure branch, the story is a bit different. IDs are predictable, and all the look-up operations are based on those IDs, so while not possible straight out from the views, attackers could access resources by guessing the correct URL. (Same thing for internal users escalation. For instance, a QA person accessing Admin stuff.)
 
 ## Injection
-Regarding SQL injection, both branches count with the basic protection that Rails provides out of the box. Still, in the **vulnerable** one, we made some intensional mistakes like handcrafting SQL commands using params from userland. (e.g. `[TODO:]`)
+Regarding SQL injection, both branches count with the basic protection that Rails provides out of the box. Still, in the **vulnerable** one, we made some intensional mistakes like handcrafting SQL commands using params from userland.
 
 ## Vulnerable and Outdated Components
 In the **secure** branch, we add three checkers that helps to prevent using outdated or vulnerable libraries.
 
-[TODO: Links to tools' websites]
 
 ```
 $ brakeman
