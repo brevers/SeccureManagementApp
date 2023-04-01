@@ -19,7 +19,6 @@ Regarding SQL injection, both branches count with the basic protection that Rail
 ## Vulnerable and Outdated Components
 In the **secure** branch, we add three checkers that helps to prevent using outdated or vulnerable libraries.
 
-[TODO: Links to tools' websites]
 
 ```
 $ brakeman
